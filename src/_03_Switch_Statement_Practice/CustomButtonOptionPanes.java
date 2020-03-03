@@ -32,7 +32,7 @@ public class CustomButtonOptionPanes {
 			JOptionPane.showMessageDialog(null, "you chose Friday");
 			break;
 		case 6:
-			JOptionPane.showMessageDialog(null, "you chose Sunday");
+			JOptionPane.showMessageDialog(null, "you chose Saturday");
 			break;
 
 		}
