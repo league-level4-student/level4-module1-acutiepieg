@@ -52,8 +52,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 				g2.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 				g2.setColor(FOOD_COLOR);
-				g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
-						Snake.BODY_SIZE);
+				g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE, Snake.BODY_SIZE);
 				snake.draw(g);
 			}
 		};
@@ -161,9 +160,9 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		timer.stop();
 
 		// 2. tell the user their snake is dead
-		
+		JOptionPane.showMessageDialog(null, "Your snake died.");
 		// 3. ask them if they want to play again.
-
+		
 		// 4. if they want to play again
 		// reset the snake and the food and start the timer
 		// else, exit the game
@@ -178,13 +177,22 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// 1. update the snake
-
+		snake.update();
 		// 2. if the snake is colliding with its own body
 		// or if the snake is out of bounds, call gameOver
-
+		if(snake.isHeadCollidingWithBody()) {
+			gameOver();
+		}
+		if(snake.isOutOfBounds()) {
+			gameOver();
+		}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-
+		if(snake.getHeadLocation().equals(foodLocation)) {
+			snake.feed();
+			setFoodLocation();
+		}
 		// 4. call panel.repaint();
+		panel.repaint();
 	}
 }
