@@ -36,25 +36,22 @@ public class Snake {
 	public void update() {
 		// 1. use a switch statement to check on the currentDirection
 		// of the snake and calculate its next x and y position.
+		Location newLoc = new Location (0,0);
 		switch (currentDirection) {
 		case UP: {
-			head.getLocation().y = -1;
-			head.setLocation(head.getLocation());
+			newLoc = new Location(head.getLocation().x, head.getLocation().y - 1);
 			break;
 		}
 		case DOWN: {
-			head.getLocation().y = +1;
-			head.setLocation(head.getLocation());
+			newLoc = new Location(head.getLocation().x, head.getLocation().y + 1);
 			break;
 		}
 		case LEFT: {
-			head.getLocation().x = -1;
-			head.setLocation(head.getLocation());
+			newLoc = new Location(head.getLocation().x - 1, head.getLocation().y);
 			break;
 		}
 		case RIGHT: {
-			head.getLocation().x = +1;
-			head.setLocation(head.getLocation());
+			newLoc = new Location(head.getLocation().x + 1, head.getLocation().y);
 			break;
 		}
 		}
@@ -69,7 +66,7 @@ public class Snake {
 		}
 
 		// 3. set the location of the head to the new location calculated in step 1
-		head.setLocation(getHeadLocation());
+		head.setLocation(newLoc);
 		// 4. set canMove to true
 		canMove = true;
 	}
