@@ -36,7 +36,7 @@ public class Snake {
 	public void update() {
 		// 1. use a switch statement to check on the currentDirection
 		// of the snake and calculate its next x and y position.
-		Location newLoc = new Location (0,0);
+		Location newLoc = new Location(0, 0);
 		switch (currentDirection) {
 		case UP: {
 			newLoc = new Location(head.getLocation().x, head.getLocation().y - 1);
@@ -107,10 +107,10 @@ public class Snake {
 		// 1. complete the method so it returns true if the head of the snake is outside
 		// of the window
 		// and false otherwise
-		if (head.getLocation().x > _00_SnakeGame.WINDOW_WIDTH || head.getLocation().x < 0) {
+		if (head.getLocation().x > _00_SnakeGame.WIDTH || head.getLocation().x < 0) {
 			return true;
 		}
-		if (head.getLocation().y > _00_SnakeGame.WINDOW_HEIGHT || head.getLocation().y < 0) {
+		if (head.getLocation().y > _00_SnakeGame.HEIGHT || head.getLocation().y < 0) {
 			return true;
 		}
 		return false;

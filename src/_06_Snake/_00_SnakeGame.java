@@ -85,15 +85,15 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// of the game. The smaller the number, the faster it goes.
 		switch (choice) {
 		case "Beginner": {
-			timer.setDelay(1000);
-			break;
-		}
-		case "Moderate": {
 			timer.setDelay(500);
 			break;
 		}
+		case "Moderate": {
+			timer.setDelay(300);
+			break;
+		}
 		case "Expert": {
-			timer.setDelay(150);
+			timer.setDelay(100);
 			break;
 		}
 		}
@@ -118,18 +118,23 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_DOWN: {
 			snake.setDirection(Direction.DOWN);
+			break;
 		}
 		case KeyEvent.VK_UP: {
 			snake.setDirection(Direction.UP);
+			break;
 		}
 		case KeyEvent.VK_RIGHT: {
 			snake.setDirection(Direction.RIGHT);
+			break;
 		}
 		case KeyEvent.VK_LEFT: {
 			snake.setDirection(Direction.LEFT);
+			break;
 		}
 		case KeyEvent.VK_SPACE: {
 			snake.feed();
+			break;
 		}
 		}
 
@@ -141,18 +146,20 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 	}
 
 	private void setFoodLocation() {
+		foodLocation = null;
 		// 1. Create a new Location object that is set to a random location
-		Random ran = new Random();
-		Location l = new Location(ran.nextInt(WIDTH), ran.nextInt(HEIGHT));
+		
 		// 2. set the foodLocation variable equal to the Location object you just
 		// created.
 		// use the snake's isLocationOnSnake method to make sure you don't put the food
 		// on the snake
-		while (foodLocation == null) {
+		do {
+			Random ran = new Random();
+			Location l = new Location(ran.nextInt(WIDTH), ran.nextInt(HEIGHT));
 			if (!snake.isLocationOnSnake(l)) {
 				foodLocation = l;
 			}
-		}
+		} while (foodLocation == null);
 	}
 
 	private void gameOver() {
